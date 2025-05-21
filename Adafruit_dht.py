@@ -5,7 +5,10 @@ import RPi.GPIO as GPIO
 import Adafruit_DHT
 
 # GPIO beállítások
-GPIO.setmode(GPIO.BCM) # BCM számozást használunk (GPIO számok)
+# GPIO.setmode(GPIO.BCM) - Ez a sor dönti el, hogyan számozzuk a Raspberry Pi GPIO lábait.
+# A "BCM" (Broadcom SOC Channel) módszer a CPU belső GPIO pin sorszámait használja.
+# Ez az ajánlott mód, és a kódban a DHT_PIN = 17 is ezt a számozást követi (ami a fizikai 11. pin).
+GPIO.setmode(GPIO.BCM)
 
 # DHT11 szenzor
 DHT_SENSOR = Adafruit_DHT.DHT11 # Meghatározzuk, hogy DHT11 szenzort használunk
@@ -74,4 +77,3 @@ finally:
     blue_led.close()
     red_led.close()
     print("GPIO lábak tisztítva és LED-ek kikapcsolva.")
-    
